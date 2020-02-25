@@ -59,14 +59,11 @@ endif
 
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/vimplug_plugins')
+call plug#begin('~/.vim/vimplugs')
 
 Plug 'jupyter-vim/jupyter-vim'
 
 call plug#end() " end plugin installation section
 
-
-
-
-
+" Reload .vimrc and run :PlugInstall to install plugins
 
