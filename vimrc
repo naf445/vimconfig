@@ -84,3 +84,17 @@ if exists('g:vim_virtualenv_path')
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
     pythonx with open(activate_this) as f: exec(f.read(), {'__file__': activate_this})
 endif
+
+" Following the learn the vimscript the hard way tutorial, so adding some
+" things below here which are exercises in the book.
+echom "Hey Nate, good coding today! - vimCat (>^.^<)"
+
+" Set it so long lines wrap around and don't disappear into the ether off the
+" right side of the screen
+set wrap
+
+" Set this so when I shift it automatically rounds to a multiple of my indent
+" width.
+set shiftround
+
+" You left off learn vimscript the hard way after chapter 2!
