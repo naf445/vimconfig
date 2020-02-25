@@ -69,6 +69,15 @@ call plug#end() " end plugin installation section
 
 " I am telling Vim to always use the same virtualenv for vim, regardless of what Python
 " environment is loaded in the shell from which vim is launched
+" Just to give myself a little more context, vim-jupyter I use to be able to
+" send stuff from my vim session editing a .py file to an already existing
+" jupyter console (jupyter console also known as iPython). This step here
+" makes it so that upon opening vim, a specifically created and designated
+" virtual environment is opened. This environment is running the *exact*
+" version of python which vim was compiled on. This is necessary for the
+" vim-jupyter plugin to run correctly. However you can start the jupyter
+" console session from any environment and still connect to it and send it
+" code from Vim.
 let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
