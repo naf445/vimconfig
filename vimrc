@@ -67,3 +67,11 @@ call plug#end() " end plugin installation section
 
 " Reload .vimrc and run :PlugInstall to install plugins
 
+" I am telling Vim to always use the same virtualenv for vim, regardless of what Python
+" environment is loaded in the shell from which vim is launched
+let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+if exists('g:vim_virtualenv_path')
+    pythonx import os; import vim
+    pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
+    pythonx with open(activate_this) as f: exec(f.read(), {'__file__': activate_this})
+endif
