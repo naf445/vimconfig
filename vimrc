@@ -44,6 +44,26 @@ set showmatch "When your cursor moves over a parenthesis-like character, the mat
 
 set hlsearch            " highlight matches
 
+" Adding a vim-plug section to my vimrc
+" This part downloads and installs vim-plug, I guess my preferred plugin manager!
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" To install plugins do the following:
+" Begin the section with call plug#begin()
+" List the plugins with Plug commands
+" call plug#end() to update &runtimepath and initialize plugin system
+
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/vimplug_plugins')
+
+Plug 'jupyter-vim/jupyter-vim'
+
+call plug#end() " end plugin installation section
 
 
 
