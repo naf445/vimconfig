@@ -78,7 +78,7 @@ call plug#end() " end plugin installation section
 " vim-jupyter plugin to run correctly. However you can start the jupyter
 " console session from any environment and still connect to it and send it
 " code from Vim.
-let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
