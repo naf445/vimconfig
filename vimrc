@@ -31,6 +31,7 @@ set tabstop=4
 set softtabstop=4
 
 " Turn off arrow key usability totally
+" The way mapping work in general is map 'this' to 'that'.
 map <Down> <NOP>
 map <Up> <NOP>
 map <Left> <NOP>
@@ -78,7 +79,7 @@ call plug#end() " end plugin installation section
 " vim-jupyter plugin to run correctly. However you can start the jupyter
 " console session from any environment and still connect to it and send it
 " code from Vim.
-let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
+let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
@@ -89,7 +90,7 @@ endif
 " things below here which are exercises in the book.
 echom "Hey Nate, good coding today! - vimCat (>^.^<)"
 
-" Set it so long lines wrap around and don't disappear into the ether off the
+" Set it so long lines wthis is mty test rap around and don't disappear into the ether off the
 " right side of the screen
 set wrap
 
@@ -97,4 +98,23 @@ set wrap
 " width.
 set shiftround
 
-" You left off learn vimscript the hard way after chapter 2!
+" Maps - to mean take this line and move it down
+map - Vyddp 
+
+" Maps _ to mean take this line and move it up
+map _ Vyddkkp
+
+" In visual mode, when I click control-d, delete line
+imap <c-d> <esc>0Di
+
+" Create mappings to autocomplete parenthesis (and other parens like chars) and place my cursor inside
+imap ( ()<esc>i
+imap < <><esc>i
+imap { {}<esc>i
+imap [ []<esc>i
+
+" maps 'up' to switch to visual mode, then highlight the rest of the inner
+" word, then switch to the other end of the word, then upper case
+nmap up viwoU
+
+" You finished lesson 4, Modal Mapping
