@@ -30,12 +30,15 @@ set tabstop=4
 " the number of spaces that is inserted when you hit <TAB> and also the number of spaces that are removed when you backspace
 set softtabstop=4
 
+let mapleader = ","
+let maplocalleader="\\"
+
 " Turn off arrow key usability totally
 " The way mapping work in general is map 'this' to 'that'.
-map <Down> <NOP>
-map <Up> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
+noremap <Down> <NOP>
+noremap <Up> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 set cursorline " draws a horizontal highlight or underline on the line your cursor is currently on
 
@@ -79,7 +82,11 @@ call plug#end() " end plugin installation section
 " vim-jupyter plugin to run correctly. However you can start the jupyter
 " console session from any environment and still connect to it and send it
 " code from Vim.
-let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+
+" For work/linux computer
+"let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+" For home/mac computer
+let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
@@ -99,22 +106,24 @@ set wrap
 set shiftround
 
 " Maps - to mean take this line and move it down
-map - Vyddp 
+noremap - Vyddp 
 
 " Maps _ to mean take this line and move it up
-map _ Vyddkkp
+noremap _ Vyddkkp
 
-" In visual mode, when I click control-d, delete line
-imap <c-d> <esc>0Di
+" In insert mode, when I click control-d, delete line
+inoremap <c-d> <esc>0Di
 
 " Create mappings to autocomplete parenthesis (and other parens like chars) and place my cursor inside
-imap ( ()<esc>i
-imap < <><esc>i
-imap { {}<esc>i
-imap [ []<esc>i
+inoremap <leader>( ()<esc>i
+inoremap <leader>< <><esc>i
+inoremap <leader>{ {}<esc>i
+inoremap <leader>[ []<esc>i
+
 
 " maps 'up' to switch to visual mode, then highlight the rest of the inner
 " word, then switch to the other end of the word, then upper case
-nmap up viwoU
+nnoremap <leader>up viwoU
 
-" You finished lesson 4, Modal Mapping
+" Make it easy to open and edit my vimrc file
+
