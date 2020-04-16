@@ -66,6 +66,8 @@ endif
 call plug#begin('~/.vim/vimplugs')
 
 Plug 'jupyter-vim/jupyter-vim'
+Plug 'tpope/vim-fugitive'
+"http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
 
 call plug#end() " end plugin installation section
 
@@ -84,9 +86,9 @@ call plug#end() " end plugin installation section
 " code from Vim.
 
 " For work/linux computer
-"let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
 " For home/mac computer
-let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
+"let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
