@@ -35,6 +35,7 @@ let maplocalleader="\\"
 
 " Turn off arrow key usability totally
 " The way mapping work in general is map 'this' to 'that'.
+" We use noremap instead of map is to avoid recursive mappings.
 noremap <Down> <NOP>
 noremap <Up> <NOP>
 noremap <Left> <NOP>
@@ -116,16 +117,31 @@ noremap _ Vyddkkp
 " In insert mode, when I click control-d, delete line
 inoremap <c-d> <esc>0Di
 
-" Create mappings to autocomplete parenthesis (and other parens like chars) and place my cursor inside
+" Create mappings to autocomplete some chars and place my cursor inside
 inoremap <leader>( ()<esc>i
 inoremap <leader>< <><esc>i
 inoremap <leader>{ {}<esc>i
 inoremap <leader>[ []<esc>i
-
+inoremap <leader>' ''<esc>i
+inoremap <leader>" ""<esc>i
+inoremap <leader>< <><esc>i
 
 " maps 'up' to switch to visual mode, then highlight the rest of the inner
 " word, then switch to the other end of the word, then upper case
 nnoremap <leader>up viwoU
 
-" Make it easy to open and edit my vimrc file
+" Make it easy to open and edit my vimrc file (the <cr> stands for carriage
+" return, or enter colloquially!)
+nnoremap <leader>evrc :vsplit ~/.vim/vimrc<cr>
 
+" Make it easy to source my vimrc file, even from another file
+nnoremap <leader>svrc :source ~/.vim/vimrc<cr>
+
+" Can set abbreviations (words that will change if they precede a non_keyword
+" character. No keyword characters include anything that's not a number,
+" letter, or underscore.) These can be useful for correcting typos, or other
+" auto expanding text you want.
+" Abbreviation to put my email
+iabbrev @@ NathanAriFranklin@gmail.com
+" Abbreviation to put todays date
+iabbrev DD <C-R>=strftime("%d %b %Y")<CR> 
