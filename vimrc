@@ -124,7 +124,6 @@ inoremap <leader>{ {}<esc>i
 inoremap <leader>[ []<esc>i
 inoremap <leader>' ''<esc>i
 inoremap <leader>" ""<esc>i
-inoremap <leader>< <><esc>i
 
 " maps 'up' to switch to visual mode, then highlight the rest of the inner
 " word, then switch to the other end of the word, then upper case
@@ -145,3 +144,34 @@ nnoremap <leader>svrc :source ~/.vim/vimrc<cr>
 iabbrev @@ NathanAriFranklin@gmail.com
 " Abbreviation to put todays date
 iabbrev DD <C-R>=strftime("%d %b %Y")<CR> 
+
+" Mapping to allow me to wrap quotation marks or one of many other symbols
+" around a word. It works by visually selecting the word, exiting visual mode
+" to go to the last character, inserting symbol afterwords, move to beginning
+" of word, insert mode before first character, insert symbol, go to end.
+nnoremap <leader><leader>( viw<esc>a)<esc>bi(<esc>lel
+nnoremap <leader><leader>< viw<esc>a><esc>bi<<esc>lel
+nnoremap <leader><leader>{ viw<esc>a}<esc>bi{<esc>lel
+nnoremap <leader><leader>[ viw<esc>a]<esc>bi[<esc>lel
+nnoremap <leader><leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader><leader>" viw<esc>a"<esc>bi"<esc>lel
+
+" Mapping to allow me to wrap quotation marks or one of many other symbols
+" around selected text in visual mode. 
+vnoremap <leader><leader>( <esc>`>a)<esc>`<i(<esc>`<lv`>l
+vnoremap <leader><leader>< <esc>`>a><esc>`<i<<esc>`<lv`>l
+vnoremap <leader><leader>{ <esc>`>a}<esc>`<i{<esc>`<lv`>l
+vnoremap <leader><leader>[ <esc>`>a]<esc>`<i[<esc>`<lv`>l
+vnoremap <leader><leader>' <esc>`>a'<esc>`<i'<esc>`<lv`>l
+vnoremap <leader><leader>" <esc>`>a"<esc>`<i"<esc>`<lv`>l
+
+" Maps H in normal mode to go to the beginning of the current line. Since h moves left you can think of H as a "stronger" h
+nnoremap H 0
+" Maps L in normal mode to go to the end of the current line. Since l moves right you can think of L as a "stronger" l
+nnoremap L $
+
+" Save some wear and tear on our left hand by making escaping a bit more
+" fluid! Also disable the old way to force me!
+inoremap jk <esc>
+inoremap <esc> <nop>
+
