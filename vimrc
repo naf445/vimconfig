@@ -33,13 +33,21 @@ set softtabstop=4
 let mapleader = ","
 let maplocalleader="\\"
 
-" Turn off arrow key usability totally
+" Turn off arrow key/keys usability totally
 " The way mapping work in general is map 'this' to 'that'.
 " We use noremap instead of map is to avoid recursive mappings.
-noremap <Down> <NOP>
-noremap <Up> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+nnoremap <Down> <NOP>
+nnoremap <Up> <NOP>
+nnoremap <Left> <NOP>
+nnoremap <Right> <NOP>
+inoremap <Down> <NOP>
+inoremap <Up> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+vnoremap <Down> <NOP>
+vnoremap <Up> <NOP>
+vnoremap <Left> <NOP>
+vnoremap <Right> <NOP>
 
 set cursorline " draws a horizontal highlight or underline on the line your cursor is currently on
 
