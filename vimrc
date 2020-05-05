@@ -95,9 +95,9 @@ call plug#end() " end plugin installation section
 " code from Vim.
 
 " For work/linux computer
-let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
+" let g:vim_virtualenv_path = '/home/sodflo/virtualenvs/vim_virtualenv'
 " For home/mac computer
-"let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
+let g:vim_virtualenv_path = '/Users/nathanfranklin/virtualenvs/vim_virtualenv'
 if exists('g:vim_virtualenv_path')
     pythonx import os; import vim
     pythonx activate_this = os.path.join(vim.eval('g:vim_virtualenv_path'), 'bin/activate_this.py')
@@ -183,4 +183,17 @@ nnoremap L $
 inoremap jk <esc>
 inoremap <esc> <nop>
 
-" Left off @ Buffer-Local Options and Mappings
+" Remap undo and redo to be a bit more vim like
+noremap U <C-r>
+
+" Autocommands, tells vim to watch for an event (there are a ton if different
+" events available in vim), filter to only catch certain
+" of these events, and then the command to run when this event is executed.
+" See :help autocmd-events for a list of events
+
+" Autocommand to fire on the FileType event, which happens when a buffer sets
+" a file's type. And in this command we catch a python file, and go ahead and
+" make a mapping for in that buffer to comment with a python comment sign!
+:autocmd FileType python nnoremap <buffer> <leader>/ I#<esc>
+
+" Last lesson was autocommands
