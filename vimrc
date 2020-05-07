@@ -173,15 +173,19 @@ vnoremap <leader><leader>[ <esc>`>a]<esc>`<i[<esc>`<lv`>l
 vnoremap <leader><leader>' <esc>`>a'<esc>`<i'<esc>`<lv`>l
 vnoremap <leader><leader>" <esc>`>a"<esc>`<i"<esc>`<lv`>l
 
-" Maps H in normal mode to go to the beginning of the current line. Since h moves left you can think of H as a "stronger" h
+" Maps H in normal/visual mode to go to the beginning of the current line. Since h moves left you can think of H as a "stronger" h
 nnoremap H 0
-" Maps L in normal mode to go to the end of the current line. Since l moves right you can think of L as a "stronger" l
+vnoremap H 0
+" Maps L in normal/visual mode to go to the end of the current line. Since l moves right you can think of L as a "stronger" l
 nnoremap L $
+vnoremap L $
 
 " Save some wear and tear on our left hand by making escaping a bit more
 " fluid! Also disable the old way to force me!
 inoremap jk <esc>
 inoremap <esc> <nop>
+vnoremap jk <esc>
+vnoremap <esc> <nop>
 
 " Remap undo and redo to be a bit more vim like
 noremap U <C-r>
@@ -196,4 +200,18 @@ noremap U <C-r>
 " make a mapping for in that buffer to comment with a python comment sign!
 :autocmd FileType python nnoremap <buffer> <leader>/ I#<esc>
 
-" Last lesson was autocommands
+" Operator - a command which waits for you to enter a movement command, like
+" things we use all the time. the <x> for delete, or the <j> for move down.
+" Movement - what text to apply the previous operator over!!
+" There is another mode, captured by onoremap, which will remap
+" keys when in operator mode. Thus we can create new movements!
+" If your onoremap mapping ends with some text visually selected,
+" Vim will operate on that text.
+" Otherwise, Vim will operate on the text between the original cursor position
+" and the new position
+" Below example makes the key p in operator mode operate over everything
+" inside the parenthesis!
+onoremap ip i(
+
+" start at More Operator-Pending Mappings
+
