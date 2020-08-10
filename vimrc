@@ -77,12 +77,14 @@ call plug#begin('~/.vim/vimplugs')
 Plug 'jupyter-vim/jupyter-vim'
 Plug 'tpope/vim-fugitive'
 "http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+Plug 'christoomey/vim-tmux-navigator'
+"https://thoughtbot.com/blog/seamlessly-navigate-vim-and-tmux-splits
 
 call plug#end() " end plugin installation section
 
 " Reload .vimrc and run :PlugInstall to install plugins
 
-" I am telling Vim to always use the same virtualenv for vim, regardless of what Python
+" Below, I am telling Vim to always use the same virtualenv for vim, regardless of what Python
 " environment is loaded in the shell from which vim is launched
 " Just to give myself a little more context, vim-jupyter I use to be able to
 " send stuff from my vim session editing a .py file to an already existing
@@ -132,6 +134,7 @@ inoremap <leader>{ {}<esc>i
 inoremap <leader>[ []<esc>i
 inoremap <leader>' ''<esc>i
 inoremap <leader>" ""<esc>i
+inoremap <leader>""" """<cr>"""<esc>ka
 
 " maps 'up' to switch to visual mode, then highlight the rest of the inner
 " word, then switch to the other end of the word, then upper case
@@ -213,5 +216,18 @@ noremap U <C-r>
 " inside the parenthesis!
 onoremap ip i(
 
-" start at More Operator-Pending Mappings
+" This concept of operators and movements is KEY to efficient Vimming. 
+"More Operator-Pending Mappings
 
+" Changing to allow easy split navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Make window splitting consistent with tmux pane splitting that I set in
+" ~/.tmux.conf
+" <bar> means the | character, the pipe
+
+nnoremap <leader><bar> :vsplit<cr> 
+nnoremap <leader>\ :split<cr>
